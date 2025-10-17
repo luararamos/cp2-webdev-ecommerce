@@ -8,12 +8,12 @@ export default function Home() {
   const [productsByCategory, setProductsByCategory] = useState({});
 
   useEffect(() => {
-    fetch(`${API_URL}/products/categories`)
+    fetch(`${API_URL}categories`)
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
         data.forEach((category) => {
-          fetch(`${API_URL}/products/category/${encodeURIComponent(category)}`)
+          fetch(`${API_URL}category/${encodeURIComponent(category)}`)
             .then((res) => res.json())
             .then((products) => {
               setProductsByCategory((prev) => ({ ...prev, [category]: products }));
